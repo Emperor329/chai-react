@@ -1,8 +1,12 @@
-
+import Test from './Test'
 
 function App() {
   return (
-    <h1>we are ready to go</h1>
+    <>
+      <Test/>
+      <h1>we are ready to go</h1>
+    </>
+    
   );
 }
 
