@@ -11,7 +11,7 @@ function App() {
     {/* install tailwin css intellisense */}
       <h1 className=' flex-wrap bg-green-500 p-4 rounded -xl'>check tailwind</h1>
         <Card username="narendra" buttonText="check out profile"/>
-        <Card username="mallika" />
+        <Card username="mallika" buttonText='use this'/>
         
     </>
   )
