@@ -33,8 +33,8 @@ function SignUp() {
                 <Logo width="100%" />
             </span>
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        <h2 className="text-center text-2xl font-bold leading-tight" >Sign up to create account</h2>
+        <p className="m-2 text-center text-base text-black/60">
             Already have an account?&nbsp;
             <Link
                 to="/login"
@@ -56,13 +56,6 @@ function SignUp() {
                 
                 />
                 <Input
-                label="Full Name: "
-                placeholder="Enter your full name"
-                {...register("name", {
-                    required: true,
-                })}
-                />
-                <Input
                 label="Email: "
                 placeholder="Enter your email"
                 type="email"
@@ -82,7 +75,7 @@ function SignUp() {
                     required: true,})}
                 />
                 <Button
-                className='w-full'
+                className='w-full p-4'
                 type="submit"
                 >
                     Create Account

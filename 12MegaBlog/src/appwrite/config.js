@@ -25,7 +25,7 @@ export class Service{
                     content,
                     featuredImage,
                     status,
-                    userId,
+                    userId,// we have to set userId value which is generated from upload file
                 }
             )
         } catch (error) {
@@ -42,7 +42,7 @@ export class Service{
                 {
                     title,
                     content,
-                    featuredImage,
+                    featuredImage, // we have to set featuedImage value which is generated from upload file
                     status,
 
                 }
@@ -103,7 +103,7 @@ export class Service{
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
-                file
+                file    
             )
         } catch (error) {
             console.log("Appwrite serive :: uploadFile :: error", error);

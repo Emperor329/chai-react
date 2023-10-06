@@ -21,7 +21,7 @@ function Login() {
             // retrives userdata from service 
               const userData = await authService.getCurrentUser()
               if (userData) {
-                // pushes userdata into the store
+                // pushes userdata into the store and uses it in Post-form
                 dispatch(authLogin(userData))
                 navigate("/")
               }
@@ -79,7 +79,7 @@ function Login() {
                 type="submit"
                 className='w-full'
                 >
-                    Signin
+                    Login
                 </button>
                 </div>
             
