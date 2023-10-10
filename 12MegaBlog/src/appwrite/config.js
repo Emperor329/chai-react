@@ -14,7 +14,7 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId }){
+    async createPost({title, slug, content, featuredImage, status, userId}){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -42,7 +42,7 @@ export class Service{
                 {
                     title,
                     content,
-                    featuredImage,// we have to set featuedImage value which is generated from upload file
+                    featuredImage,
                     status,
 
                 }
@@ -54,7 +54,7 @@ export class Service{
 
     async deletePost(slug){
         try {
-             await this.databases.deleteDocument(
+            await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug

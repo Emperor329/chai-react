@@ -8,18 +8,17 @@ export default function RTE({name, control, label, defaultValue =""}) {
     <div className='w-full'> 
     {label && <label className='inline-block mb-1 pl-1'>{label}</label>}
 
-    {/*  controller is a spy and it tracks */}
     <Controller
     name={name || "content"}
     control={control}
     render={({field: {onChange}}) => (
         <Editor
-        initialValue={defaultValue} 
+        initialValue={defaultValue}
         init={{
             initialValue: defaultValue,
             height: 500,
             menubar: true,
-            plugins: [  
+            plugins: [
                 "image",
                 "advlist",
                 "autolink",
@@ -33,7 +32,7 @@ export default function RTE({name, control, label, defaultValue =""}) {
                 "visualblocks",
                 "code",
                 "fullscreen",
-                "insertdatet  ime",
+                "insertdatetime",
                 "media",
                 "table",
                 "code",
@@ -53,3 +52,4 @@ export default function RTE({name, control, label, defaultValue =""}) {
      </div>
   )
 }
+
