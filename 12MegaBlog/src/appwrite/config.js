@@ -14,7 +14,7 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId}){
+    async createPost({title, slug, content, featuredImage, status, userId }){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -25,7 +25,7 @@ export class Service{
                     content,
                     featuredImage,
                     status,
-                    userId,// we have to set userId value which is generated from upload file
+                    userId
                 }
             )
         } catch (error) {
@@ -42,7 +42,7 @@ export class Service{
                 {
                     title,
                     content,
-                    featuredImage, // we have to set featuedImage value which is generated from upload file
+                    featuredImage,// we have to set featuedImage value which is generated from upload file
                     status,
 
                 }
@@ -54,7 +54,7 @@ export class Service{
 
     async deletePost(slug){
         try {
-            await this.databases.deleteDocument(
+             await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug
@@ -103,7 +103,7 @@ export class Service{
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
-                file    
+                file
             )
         } catch (error) {
             console.log("Appwrite serive :: uploadFile :: error", error);

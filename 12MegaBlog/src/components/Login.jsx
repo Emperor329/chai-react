@@ -4,7 +4,7 @@ import {login as authLogin} from "../store/authSlice"
 import {Button, Input,Logo} from './index'
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth'
-import { useForm, } from "react-hook-form"
+import { useForm } from "react-hook-form"
 
 function Login() {
     const navigate = useNavigate()
@@ -20,10 +20,11 @@ function Login() {
             if (session) {
             // retrives userdata from service 
               const userData = await authService.getCurrentUser()
+              console.log(userData);
               if (userData) {
                 // pushes userdata into the store and uses it in Post-form
                 dispatch(authLogin(userData))
-                navigate("/")
+                navigate("/")   
               }
             }
         } catch (error) {
@@ -75,12 +76,12 @@ function Login() {
                     required: true,
                 })}
                 />
-                <button 
+                <Button 
                 type="submit"
                 className='w-full'
                 >
                     Login
-                </button>
+                </Button>
                 </div>
             
             </form>
