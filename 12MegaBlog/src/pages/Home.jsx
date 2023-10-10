@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import appwriteService from "../appwrite/config";
-import {Container, PostCard, AddPost} from '../components'
+import {Container, PostCard} from '../components'
 import { Link } from 'react-router-dom';
 
 function Home() {
@@ -21,11 +21,11 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                                {/* <Link to="/add-post">
-                                    Login to read posts
-                                </Link> */}
-                                 Login to read posts
-                                {/* <AddPost/> */}
+
+                                {/* had set this path for better navigation */}
+                                <Link to = '/login'>
+                                Login to read posts
+                                </Link>
                             </h1>
                         </div>
                     </div>

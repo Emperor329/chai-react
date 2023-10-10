@@ -1,28 +1,29 @@
-import React ,{useState,useEffect} from 'react'
-import appwriteService from '../appwrite/config'
-import {useParams,useNavigate} from 'react-router-dom'
-import { Container,PostForm } from '../components/index'
+import React, {useEffect, useState} from 'react'
+import {Container, PostForm} from '../components'
+import {Button} from '../components/index'
+import appwriteService from "../appwrite/config";
+import { useNavigate,  useParams } from 'react-router-dom';
 
 function EditPost() {
-    const [post, setPost] = useState(null)
+    const [post, setPosts] = useState(null)
+    const {slug} = useParams()
     const navigate = useNavigate()
-    const {slug} = useParams()// use params gives values from the current url
+
     useEffect(() => {
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
                 if (post) {
-                    setPost(post)
+                    setPosts(post)
                 }
             })
+        } else {
+            navigate('/')
         }
-        else{
-            navigate("/")
-        }
-    },[slug, navigate])
-    
-  return post ?(
+
+    }, [slug, navigate])
+  return post ? (
     <div className='py-8'>
-        <Container>
+        <Container>      
             <PostForm post={post}/>
         </Container>
     </div>

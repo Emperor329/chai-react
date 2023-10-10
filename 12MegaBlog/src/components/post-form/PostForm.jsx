@@ -1,14 +1,17 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, RTE, Select } from "..";
+import { Button, Input, RTE, Select,  Post } from "../";
 import appwriteService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { ID } from "appwrite";
+
+
 
 export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
-        defaultValues: {// check whether user is here to update or create post
-            title: post?.title || "",// remember the syntax in the update post below
+        defaultValues: {
+            title: post?.title || "",
             slug: post?.$id || "",
             content: post?.content || "",
             status: post?.status || "active",
@@ -16,39 +19,33 @@ export default function PostForm({ post }) {
     });
 
     const navigate = useNavigate();
-    const userData = useSelector((state) => state.auth.userData);
+    const userData = useSelector((state) =>  (state.auth.userData));
 
     const submit = async (data) => {
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
-            if (file) {// it is like emptying input fields in a form after submitting the form
+            if (file) {
                 appwriteService.deleteFile(post.featuredImage);
             }
 
             const dbPost = await appwriteService.updatePost(post.$id, {
-                ...data,// we can directly pass the (data)  here but we have to override some values
-                // override the value
-                featuredImage: file ? file.$id : undefined,// important line  // remember this syntax
+                ...data,
+                featuredImage: file ? file.$id : undefined,
             });
 
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`);
             }
-        }
-        // here file id created at upload file method, is assigned to featuredImage and both have same id 
-        else {
-            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
+        } else {
+            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]): null ;
 
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
                 
-                // console.log( typeof userData);
+                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id })
 
-                
-                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id } );
-                // console.log(dbPost.$id);
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
@@ -125,5 +122,5 @@ export default function PostForm({ post }) {
                 </Button>
             </div>
         </form>
-    );
+    ) ;
 }
