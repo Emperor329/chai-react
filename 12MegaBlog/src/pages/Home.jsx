@@ -21,7 +21,6 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-
                                 {/* had set this path for better navigation */}
                                 <Link to = '/login'>
                                 Login to read posts

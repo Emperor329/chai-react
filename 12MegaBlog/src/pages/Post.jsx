@@ -37,12 +37,10 @@ export default function Post() {
         <div className="py-8">
             <Container>
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-
-                     {/* had set this path for better navigation */}
+                    {/* had set this path for better navigation */}
                     <Link to = "/">
                         <Button className="mx-4"> Back  </Button>
                     </Link>
-
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
                         alt={post.title}
