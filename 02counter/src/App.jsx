@@ -17,7 +17,6 @@ function App() {
           setCounter(counter)
           console.log("test check",Math.random(),counter);
         }
-        
       }
     const removeValue = () =>{
       if(counter == 0){
@@ -27,7 +26,6 @@ function App() {
         counter = counter-1
       setCounter(counter)
        }
-      
     }
 
   return (
